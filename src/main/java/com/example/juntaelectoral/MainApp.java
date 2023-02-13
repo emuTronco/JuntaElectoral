@@ -22,7 +22,7 @@ public class MainApp extends Application {
         menuController.setRootLayout(rootLayout);
 
         Scene scene = new Scene(rootLayout);
-        stage.setTitle("Prueba");
+        stage.setTitle("Junta Electoral");
         stage.setScene(scene);
         stage.show();
     }

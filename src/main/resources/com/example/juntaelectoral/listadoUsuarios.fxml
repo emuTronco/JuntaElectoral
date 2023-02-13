@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="500.0" prefWidth="370.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.juntaelectoral.ListadoUsuariosController">
+   <children>
+      <Text layoutX="77.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Listado de usuarios">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Text>
+      <TableView fx:id="tablaUsuarios" layoutX="73.0" layoutY="108.0" prefHeight="285.0" prefWidth="220.0" AnchorPane.leftAnchor="73.0" AnchorPane.rightAnchor="72.0">
+        <columns>
+          <TableColumn fx:id="nameColumn" prefWidth="71.0" text="Usuario" />
+          <TableColumn fx:id="passColumn" prefWidth="71.0" text="Contraseña" />
+            <TableColumn fx:id="adminColumn" prefWidth="70.0" text="Admin" />
+        </columns>
+      </TableView>
+      <Button layoutX="67.0" layoutY="432.0" mnemonicParsing="false" text="Convertir en admin" AnchorPane.leftAnchor="50.0" />
+      <Button layoutX="216.0" layoutY="432.0" mnemonicParsing="false" text="Eliminar usuario" AnchorPane.rightAnchor="50.0" />
+   </children>
+</AnchorPane>
