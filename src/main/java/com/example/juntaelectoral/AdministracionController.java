@@ -1,6 +1,5 @@
 package com.example.juntaelectoral;
 
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -8,7 +7,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.*;
 
 import java.io.IOException;
@@ -24,7 +22,9 @@ public class AdministracionController implements Initializable {
     ListView<String> lvAdmin = new ListView<String>();
 
     @FXML
-    private ObservableList usuarios = FXCollections.observableArrayList();
+    protected ObservableList tipoUsuario = FXCollections.observableArrayList();
+    @FXML
+    protected ObservableList listadoUsuarios = FXCollections.observableArrayList();
 
     @FXML
     private HBox hBox;
@@ -38,15 +38,19 @@ public class AdministracionController implements Initializable {
     private ColorPicker cPResaltado;
     @FXML
     private Accordion a1 = new Accordion();
+    @FXML
+    private TextField tfUsuario;
+    @FXML
+    private TextField tfContrasenia;
 
 
-    private MainApp mainApp;
+    private static MainApp mainApp;
 
     @FXML
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        usuarios.add("Usuario");
-        usuarios.add("Administrador");
-        lvAdmin.setItems(usuarios);
+        tipoUsuario.add("Usuario");
+        tipoUsuario.add("Administrador");
+        lvAdmin.setItems(tipoUsuario);
 
 
     }
@@ -58,13 +62,13 @@ public class AdministracionController implements Initializable {
             hBox.getChildren().clear();
             Pane pane = new Pane();
             a1 = new Accordion();
-            TitledPane t1 = new TitledPane();
+            TitledPane t1 = new TitledPane("Usuarios", new TextField());
             TitledPane t2 = new TitledPane("Duración", new TextField());
             TitledPane t3 = new TitledPane("Refresco", new ComboBox<String>(velRefresco));
             a1.getPanes().addAll(t1, t2, t3);
             hBox.getChildren().add(a1);
             hBox.setHgrow(a1, Priority.ALWAYS);
-            cargarLayout(t1, "/com/example/juntaelectoral/listadoUsuarios.fxml");
+            cargarLayout(t1, "/com/example/juntaelectoral/listadoUsuarios.fxml", "listadoUsuarios");
             System.out.println(0);
 //            mainApp.getPrimaryStage().setWidth(mainApp.getPrimaryStage().getWidth() + 0.0001);
         } else if (lvAdmin.getSelectionModel().isSelected(0)) {
@@ -76,14 +80,14 @@ public class AdministracionController implements Initializable {
             hBox.getChildren().add(a1);
             hBox.setHgrow(a1, Priority.ALWAYS);
 
-            cargarLayout(t1, "/com/example/juntaelectoral/creacionUsuarios.fxml");
-            cargarLayout(t2, "/com/example/juntaelectoral/cambioColor.fxml");
+            cargarLayout(t1, "/com/example/juntaelectoral/creacionUsuarios.fxml", "creacionUsuarios");
+            cargarLayout(t2, "/com/example/juntaelectoral/cambioColor.fxml", "cambioColor");
 
             System.out.println(1);
         }
     }
 
-    private static void cargarLayout(TitledPane t1, String ruta) {
+    private void cargarLayout(TitledPane t1, String ruta, String controller) {
         try {
             // Cargamos el archivo Controles Dinámicos
             FXMLLoader loader = new FXMLLoader();
@@ -93,13 +97,27 @@ public class AdministracionController implements Initializable {
             // Se sitúa en el centro del diseño principal
 
             t1.setContent(listadoControles);
+            switch (controller) {
+                case "listadoUsuarios":
+                    ListadoUsuariosController listadoUsuariosController = loader.getController();
+                    listadoUsuariosController.actualizarTabla(tipoUsuario);
+                    break;
+            }
 //                AdministracionController controller = loader.getController();
-//                controller.setMainApp(this);
+//                controller.setMainApp(mainApp);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
+    public void agregarUsuario(ActionEvent actionEvent) {
+        String usuario = tfUsuario.getText();
+        System.out.println(usuario + "AAA");
+        String passwrd = tfContrasenia.getText();
+        listadoUsuarios.add(new Usuario(usuario, passwrd, false));
+        tfUsuario.setText("");
+        tfContrasenia.setText("");
+    }
 
 
     public void setMainApp(MainApp mainApp) {
@@ -122,5 +140,9 @@ public class AdministracionController implements Initializable {
                 break;
         }
         System.out.println("Fin");
+    }
+
+    public ObservableList getTipoUsuario() {
+        return tipoUsuario;
     }
 }
