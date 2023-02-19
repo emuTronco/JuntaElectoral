@@ -6,43 +6,37 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 public class Usuario {
-    public final StringProperty nombre;
-    public final StringProperty password;
-    public final BooleanProperty esAdmin;
+    private String nombre;
+    private String password;
+    private Boolean esAdmin;
+    private String formatoToString = "Nombre: %s   Contraseña: %s   Admin: %s";
 
     public Usuario(String nombre, String password, Boolean esAdmin) {
-        this.nombre = new SimpleStringProperty(nombre);
-        this.password = new SimpleStringProperty(password);
-        this.esAdmin = new SimpleBooleanProperty(esAdmin);
+        this.nombre = nombre;
+        this.password = password;
+        this.esAdmin = esAdmin;
     }
 
+    @Override
+    public String toString() {
+        formatoToString = String.format(formatoToString, nombre, password, esAdmin);
+        return formatoToString;
+    }
 
-    public StringProperty nombreProperty() {
+    public String getNombre() {
         return nombre;
     }
 
-
-    public StringProperty passWordProperty() {
+    public String getPassword() {
         return password;
     }
 
-
-    public BooleanProperty esAdminProperty() {
+    public Boolean getEsAdmin() {
         return esAdmin;
     }
 
-    public String getNombre(){
-        return nombre.get();
-    }
-    public void setNombre(String nombre) {
-        this.nombre.set(nombre);
+    public void setEsAdmin(boolean b) {
+        esAdmin = b;
     }
 
-    public void setPassword(String password) {
-        this.password.set(password);
-    }
-
-    public void setEsAdmin(boolean esAdmin) {
-        this.esAdmin.set(esAdmin);
-    }
 }

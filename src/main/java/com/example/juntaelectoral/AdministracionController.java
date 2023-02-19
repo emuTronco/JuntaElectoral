@@ -6,11 +6,15 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class AdministracionController implements Initializable {
@@ -24,11 +28,13 @@ public class AdministracionController implements Initializable {
     @FXML
     protected ObservableList tipoUsuario = FXCollections.observableArrayList();
     @FXML
-    protected ObservableList listadoUsuarios = FXCollections.observableArrayList();
+    protected static ObservableList listadoUsuarios = FXCollections.observableArrayList();
+    protected ArrayList<Usuario> listadoUsuariosAL = new ArrayList<>();
 
     @FXML
     private HBox hBox;
-
+    @FXML
+    ListView<String> lvUsuarios = new ListView<>();
 
     @FXML
     private ColorPicker cPFondo;
@@ -42,6 +48,7 @@ public class AdministracionController implements Initializable {
     private TextField tfUsuario;
     @FXML
     private TextField tfContrasenia;
+    static int contador = 0;
 
 
     private static MainApp mainApp;
@@ -51,7 +58,13 @@ public class AdministracionController implements Initializable {
         tipoUsuario.add("Usuario");
         tipoUsuario.add("Administrador");
         lvAdmin.setItems(tipoUsuario);
+        if (contador == 0) {
+            listadoUsuarios.add(new Usuario("sdf", "fe", false));
+            contador++;
+        }
 
+        System.out.println("Pane: " + rootLayout);
+        lvUsuarios.getItems().addAll(listadoUsuarios);
 
     }
 
@@ -60,7 +73,6 @@ public class AdministracionController implements Initializable {
         ObservableList velRefresco = FXCollections.observableArrayList("Automático", "Manual", "Desactivado");
         if (lvAdmin.getSelectionModel().isSelected(1)) {
             hBox.getChildren().clear();
-            Pane pane = new Pane();
             a1 = new Accordion();
             TitledPane t1 = new TitledPane("Usuarios", new TextField());
             TitledPane t2 = new TitledPane("Duración", new TextField());
@@ -70,7 +82,6 @@ public class AdministracionController implements Initializable {
             hBox.setHgrow(a1, Priority.ALWAYS);
             cargarLayout(t1, "/com/example/juntaelectoral/listadoUsuarios.fxml", "listadoUsuarios");
             System.out.println(0);
-//            mainApp.getPrimaryStage().setWidth(mainApp.getPrimaryStage().getWidth() + 0.0001);
         } else if (lvAdmin.getSelectionModel().isSelected(0)) {
             hBox.getChildren().clear();
             a1 = new Accordion();
@@ -89,22 +100,7 @@ public class AdministracionController implements Initializable {
 
     private void cargarLayout(TitledPane t1, String ruta, String controller) {
         try {
-            // Cargamos el archivo Controles Dinámicos
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(PrincipalController.class.getResource(ruta));
-            AnchorPane listadoControles = (AnchorPane) loader.load();
-
-            // Se sitúa en el centro del diseño principal
-
-            t1.setContent(listadoControles);
-            switch (controller) {
-                case "listadoUsuarios":
-                    ListadoUsuariosController listadoUsuariosController = loader.getController();
-                    listadoUsuariosController.actualizarTabla(tipoUsuario);
-                    break;
-            }
-//                AdministracionController controller = loader.getController();
-//                controller.setMainApp(mainApp);
+            t1.setContent(FXMLLoader.load(getClass().getResource(ruta)));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -114,7 +110,10 @@ public class AdministracionController implements Initializable {
         String usuario = tfUsuario.getText();
         System.out.println(usuario + "AAA");
         String passwrd = tfContrasenia.getText();
-        listadoUsuarios.add(new Usuario(usuario, passwrd, false));
+        Usuario u1 = new Usuario(usuario, passwrd, false);
+        listadoUsuariosAL.add(u1);
+        listadoUsuarios.add(u1);
+        lvUsuarios.refresh();
         tfUsuario.setText("");
         tfContrasenia.setText("");
     }
@@ -125,17 +124,20 @@ public class AdministracionController implements Initializable {
     }
 
 
-    public void cambiarColor(ActionEvent actionEvent) {
+    public void cambiarColor(ActionEvent actionEvent) throws IOException {
         ColorPicker colorSelec = (ColorPicker) actionEvent.getSource();
         String seleccionado = colorSelec.getId();
         System.out.println(seleccionado);
         switch (seleccionado) {
             case "cPFondo":
                 System.out.println("Si");
-                colorSelec.getParent().setStyle("-fx-background-color: red");
-                colorSelec.getParent().getParent().setStyle("-fx-background-color: red");
-                colorSelec.getParent().getParent().getParent().getParent().setStyle("-fx-background-color: red");
-//                rootLayout.setStyle("-fx-background-color: red");
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(getClass().getResource("/com/example/juntaelectoral/ventanaAdministracion.fxml"));
+                Parent root = (Parent) loader.load();
+
+                if (rootLayout != null) {
+                    rootLayout.setStyle("-fx-background-color: red");
+                }
                 System.out.println("Si");
                 break;
         }
@@ -144,5 +146,19 @@ public class AdministracionController implements Initializable {
 
     public ObservableList getTipoUsuario() {
         return tipoUsuario;
+    }
+
+    public void eliminarUsuario(ActionEvent actionEvent) {
+        int indice = lvUsuarios.getSelectionModel().getSelectedIndex();
+        listadoUsuarios.remove(indice);
+        lvUsuarios.getItems().remove(indice);
+    }
+
+    public void convertirAdmin(ActionEvent actionEvent) {
+        int indice = lvUsuarios.getSelectionModel().getSelectedIndex();
+        String cambio = listadoUsuarios.get(indice).toString();
+        cambio = cambio.replace("false", "true");
+        listadoUsuarios.set(indice, cambio);
+        lvUsuarios.getItems().set(indice, cambio);
     }
 }
