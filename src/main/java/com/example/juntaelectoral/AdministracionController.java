@@ -67,6 +67,7 @@ public class AdministracionController implements Initializable {
         System.out.println("Pane: " + rootLayout);
         lvUsuarios.getItems().addAll(listadoUsuarios);
 
+
     }
 
     @FXML
@@ -131,6 +132,7 @@ public class AdministracionController implements Initializable {
         System.out.println(seleccionado);
         switch (seleccionado) {
             case "cPFondo":
+                verTodosLosNodos(rootLayout, 0);
                 System.out.println("Si");
                 FXMLLoader loader = new FXMLLoader();
                 loader.setLocation(getClass().getResource("/com/example/juntaelectoral/ventanaAdministracion.fxml"));
@@ -161,5 +163,15 @@ public class AdministracionController implements Initializable {
         cambio = cambio.replace("false", "true");
         listadoUsuarios.set(indice, cambio);
         lvUsuarios.getItems().set(indice, cambio);
+    }
+
+    private static void verTodosLosNodos(Parent padre, int i) {
+        int j;
+        for (Node nodo : padre.getChildrenUnmodifiable()) {
+            for (j = 0; j < i; ++j) System.out.print(" ");
+            System.out.println(nodo.toString());
+            if (nodo instanceof Parent)
+                verTodosLosNodos((Parent) nodo, i + 4);
+        }
     }
 }

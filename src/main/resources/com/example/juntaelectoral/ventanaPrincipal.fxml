@@ -15,7 +15,7 @@
         <menus>
           <Menu mnemonicParsing="false" text="Mando">
             <items>
-              <MenuItem mnemonicParsing="false" text="Open" />
+              <MenuItem mnemonicParsing="false" onAction="#abrirLogin" text="Open" />
                   <MenuItem mnemonicParsing="false" text="Close" />
             </items>
           </Menu>
