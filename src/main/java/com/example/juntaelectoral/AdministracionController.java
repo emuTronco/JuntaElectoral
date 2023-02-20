@@ -59,7 +59,8 @@ public class AdministracionController implements Initializable {
         tipoUsuario.add("Administrador");
         lvAdmin.setItems(tipoUsuario);
         if (contador == 0) {
-            listadoUsuarios.add(new Usuario("sdf", "fe", false));
+            listadoUsuarios.add(new Usuario("admin", "admin", true));
+            listadoUsuarios.add(new Usuario("user", "user", false));
             contador++;
         }
 

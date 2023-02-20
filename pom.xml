@@ -38,6 +38,11 @@
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>com.vladsch.javafx-webview-debugger</groupId>
+            <artifactId>javafx-webview-debugger</artifactId>
+            <version>0.8.6</version>
+        </dependency>
     </dependencies>
 
     <build>
