@@ -7,6 +7,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.web.WebView?>
 
 <AnchorPane prefHeight="570.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.juntaelectoral.CuadroMandoController">
    <children>
@@ -26,37 +27,39 @@
                <children>
                   <HBox fx:id="hbox1" alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <ImageView fitHeight="150.0" fitWidth="200.0" onMouseClicked="#expandirVentana" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="150.0" fitWidth="250.0" onMouseClicked="#expandirVentana" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../../img/Logotipo_de_la_Xunta_de_Galicia.svg.png" />
                            </image>
                         </ImageView>
                      </children>
                   </HBox>
-                  <HBox fx:id="hbox2" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1">
-                     <children>
-                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../img/banderaGalicia.png" />
-                           </image>
-                        </ImageView>
-                     </children>
-                  </HBox>
+                  <HBox fx:id="hbox2" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" />
                   <HBox fx:id="hbox3" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2">
                      <children>
-                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="80.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../../img/jec-logo.png" />
                            </image>
                         </ImageView>
                      </children>
                   </HBox>
-                  <HBox fx:id="hbox4" alignment="CENTER" fillHeight="false" maxHeight="-Infinity" maxWidth="-Infinity" onMouseClicked="#expandirVentana" prefHeight="173.0" prefWidth="250.0" GridPane.rowIndex="1" />
-                  <HBox fx:id="hbox5" fillHeight="false" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="173.0" prefWidth="250.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <HBox fx:id="hbox6" fillHeight="false" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="173.0" prefWidth="250.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                  <HBox fx:id="hbox7" fillHeight="false" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="173.0" prefWidth="250.0" GridPane.rowIndex="2" />
-                  <HBox fx:id="hbox8" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <HBox fx:id="hbox9" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                  <HBox fx:id="hbox4" alignment="CENTER" fillHeight="false" maxHeight="-Infinity" maxWidth="-Infinity" onMouseClicked="#expandirVentana" prefHeight="173.0" prefWidth="250.0" GridPane.hgrow="NEVER" GridPane.rowIndex="1" GridPane.vgrow="NEVER" />
+                  <HBox fx:id="hbox5" alignment="CENTER" fillHeight="false" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="173.0" prefWidth="250.0" GridPane.columnIndex="1" GridPane.hgrow="NEVER" GridPane.rowIndex="1" GridPane.vgrow="NEVER">
+                     <children>
+                        <ImageView fitHeight="150.0" fitWidth="225.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../img/banderaGalicia.png" />
+                           </image>
+                        </ImageView>
+                     </children></HBox>
+                  <HBox fx:id="hbox6" fillHeight="false" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="173.0" prefWidth="250.0" GridPane.columnIndex="2" GridPane.hgrow="NEVER" GridPane.rowIndex="1" GridPane.vgrow="NEVER" />
+                  <HBox fx:id="hbox7" fillHeight="false" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="173.0" prefWidth="250.0" GridPane.hgrow="NEVER" GridPane.rowIndex="2" GridPane.vgrow="NEVER" />
+                  <HBox fx:id="hbox8" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.hgrow="NEVER" GridPane.rowIndex="2" GridPane.vgrow="NEVER">
+                     <children>
+                        <WebView fx:id="webView" prefHeight="200.0" prefWidth="200.0" />
+                     </children></HBox>
+                  <HBox fx:id="hbox9" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
                </children>
             </GridPane>
          </children>

@@ -5,10 +5,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TitledPane;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
+import javafx.scene.layout.*;
+import javafx.scene.web.WebView;
 
 import java.io.IOException;
 import java.net.URL;
@@ -21,13 +19,17 @@ public class CuadroMandoController implements Initializable {
     @FXML
     GridPane gridPane;
     private MainApp mainApp;
+    @FXML
+    WebView webView;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        cargarLayout(hbox4, "/com/example/juntaelectoral/ventanaCIS.fxml", "CIS");
-        cargarLayout(hbox5, "/com/example/juntaelectoral/ventanaAnimacionResultados.fxml", "AnimacionResultados");
-        cargarLayout(hbox6, "/com/example/juntaelectoral/ventanaResumenProvincia.fxml", "Provincia");
-        cargarLayout(hbox7, "/com/example/juntaelectoral/ventanaResumenComunidad.fxml", "Comunidad");
+        cargarLayout(hbox4, "/com/example/juntaelectoral/ventanaCIS-S.fxml", "CIS");
+        cargarLayout(hbox6, "/com/example/juntaelectoral/ventanaAnimacionResultados-S.fxml", "AnimacionResultados");
+        cargarLayout(hbox7, "/com/example/juntaelectoral/ventanaResumenProvincia-S.fxml", "Provincia");
+        cargarLayout(hbox9, "/com/example/juntaelectoral/ventanaResumenComunidad-S.fxml", "Comunidad");
+
+//        webView.getEngine().load("https://www.youtube.com/embed/W5xhIy2jMkY?autoplay=1");
     }
 
     @FXML
@@ -65,14 +67,10 @@ public class CuadroMandoController implements Initializable {
                     break;
             }
             AnchorPane listadoControles = (AnchorPane) loader.load();
-            listadoControles.setMaxHeight(173);
-            listadoControles.setMaxWidth(250);
 
             hbox.getChildren().clear();
             hbox.getChildren().add(listadoControles);
 
-            hbox.setMaxHeight(173);
-            hbox.setMaxWidth(250);
         } catch (IOException e) {
             e.printStackTrace();
         }
