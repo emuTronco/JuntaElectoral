@@ -16,13 +16,13 @@
           <Menu mnemonicParsing="false" text="Mando">
             <items>
               <MenuItem mnemonicParsing="false" onAction="#abrirLogin" text="Open" />
-                  <MenuItem mnemonicParsing="false" text="Close" />
+                  <MenuItem mnemonicParsing="false" onAction="#cerrarVentana" text="Close" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Administración">
             <items>
               <MenuItem mnemonicParsing="false" onAction="#abrirAdministracion" text="Open" />
-                  <MenuItem mnemonicParsing="false" text="Close" />
+                  <MenuItem mnemonicParsing="false" onAction="#cerrarVentana" text="Close" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Resaltado">

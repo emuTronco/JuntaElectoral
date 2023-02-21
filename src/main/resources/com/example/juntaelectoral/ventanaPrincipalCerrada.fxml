@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.juntaelectoral.PrincipalController">
+   <center>
+      <HBox prefHeight="575.0" prefWidth="410.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="84.0" fitWidth="380.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../img/jec-logo.png" />
+               </image>
+               <HBox.margin>
+                  <Insets top="250.0" />
+               </HBox.margin>
+            </ImageView>
+            <ImageView fitHeight="131.0" fitWidth="345.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../img/Logotipo_de_la_Xunta_de_Galicia.svg.png" />
+               </image>
+               <HBox.margin>
+                  <Insets left="73.0" top="225.0" />
+               </HBox.margin>
+            </ImageView>
+         </children>
+      </HBox>
+   </center>
+</BorderPane>

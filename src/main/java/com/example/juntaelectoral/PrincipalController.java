@@ -1,22 +1,16 @@
 package com.example.juntaelectoral;
 
 import javafx.application.Platform;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Pair;
 
@@ -38,26 +32,62 @@ public class PrincipalController extends MainApp {
     @FXML
     private PasswordField passwordLogin;
 
+    private ObservableList<Usuario> listadoUsuarios = AdministracionController.getListadoUsuarios();
+    final String[] usuario = new String[2];
+
 
     public PrincipalController() {
         rootLayout = getRootLayout();
     }
 
+    @FXML
+    public void cerrarVentana(ActionEvent event) throws IOException {
+        try {
+            // Cargamos el archivo Controles Dinámicos
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(PrincipalController.class.getResource("/com/example/juntaelectoral/ventanaPrincipalCerrada.fxml"));
+            BorderPane listadoControles = (BorderPane) loader.load();
+
+            // Se sitúa en el centro del diseño principal
+
+            rootLayout.setCenter(listadoControles);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     @FXML
     public void abrirAdministracion(ActionEvent event) throws IOException {
-        if (loginCorrecto) {
+        try {
+            // Cargamos el archivo Controles Dinámicos
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(PrincipalController.class.getResource("/com/example/juntaelectoral/ventanaAdministracion.fxml"));
+            AnchorPane listadoControles = (AnchorPane) loader.load();
 
+            // Se sitúa en el centro del diseño principal
+
+            rootLayout.setCenter(listadoControles);
+            AdministracionController controller = loader.getController();
+            controller.setMainApp(this);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    public void abrirCuadroMando() throws IOException {
+        comprobarLogin();
+        if (loginCorrecto) {
             try {
                 // Cargamos el archivo Controles Dinámicos
                 FXMLLoader loader = new FXMLLoader();
-                loader.setLocation(PrincipalController.class.getResource("/com/example/juntaelectoral/ventanaAdministracion.fxml"));
+                loader.setLocation(PrincipalController.class.getResource("/com/example/juntaelectoral/ventanaCuadroMando.fxml"));
                 AnchorPane listadoControles = (AnchorPane) loader.load();
 
                 // Se sitúa en el centro del diseño principal
 
                 rootLayout.setCenter(listadoControles);
-                AdministracionController controller = loader.getController();
+                CuadroMandoController controller = loader.getController();
                 controller.setMainApp(this);
             } catch (IOException e) {
                 e.printStackTrace();
@@ -66,32 +96,10 @@ public class PrincipalController extends MainApp {
     }
 
     @FXML
-    public void abrirCuadroMando(ActionEvent event) throws IOException {
-        try {
-            // Cargamos el archivo Controles Dinámicos
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(PrincipalController.class.getResource("/com/example/juntaelectoral/cuadroMando.fxml"));
-            AnchorPane listadoControles = (AnchorPane) loader.load();
-
-            // Se sitúa en el centro del diseño principal
-
-            rootLayout.setCenter(listadoControles);
-            CuadroMandoController controller = loader.getController();
-            controller.setMainApp(this);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @FXML
     public void abrirLogin(ActionEvent event) throws IOException {
         // Create the custom dialog.
         Dialog<Pair<String, String>> dialog = new Dialog<>();
-        dialog.setTitle("Login Dialog");
-        dialog.setHeaderText("Look, a Custom Login Dialog");
-
-        // Set the icon (must be included in the project).
-        dialog.setGraphic(new ImageView(this.getClass().getResource("login.png").toString()));
+        dialog.setTitle("Login");
 
         // Set the button types.
         ButtonType loginButtonType = new ButtonType("Login", ButtonBar.ButtonData.OK_DONE);
@@ -104,13 +112,13 @@ public class PrincipalController extends MainApp {
         grid.setPadding(new Insets(20, 150, 10, 10));
 
         TextField username = new TextField();
-        username.setPromptText("Username");
+        username.setPromptText("Usuario");
         PasswordField password = new PasswordField();
-        password.setPromptText("Password");
+        password.setPromptText("Contraseña");
 
-        grid.add(new Label("Username:"), 0, 0);
+        grid.add(new Label("Usuario:"), 0, 0);
         grid.add(username, 1, 0);
-        grid.add(new Label("Password:"), 0, 1);
+        grid.add(new Label("Contraseña:"), 0, 1);
         grid.add(password, 1, 1);
 
         // Enable/Disable login button depending on whether a username was entered.
@@ -139,12 +147,21 @@ public class PrincipalController extends MainApp {
 
         result.ifPresent(usernamePassword -> {
             System.out.println("Username=" + usernamePassword.getKey() + ", Password=" + usernamePassword.getValue());
+            usuario[0] = usernamePassword.getKey();
+            usuario[1] = usernamePassword.getValue();
         });
+        System.out.println(usuario[0] + usuario[1]);
+        abrirCuadroMando();
     }
 
     @FXML
-    public void comprobarLogin (ActionEvent event) {
-
+    public void comprobarLogin() {
+        Usuario userLogin = new Usuario(usuario[0], usuario[1], true);
+        for (Usuario user : listadoUsuarios) {
+            if (userLogin.getNombre().equals(user.getNombre()) && userLogin.getPassword().equals(user.getPassword()) && user.getEsAdmin() == true) {
+                loginCorrecto = true;
+            }
+        }
     }
 
 

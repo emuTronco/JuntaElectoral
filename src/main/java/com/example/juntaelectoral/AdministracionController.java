@@ -8,7 +8,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 
@@ -28,7 +27,7 @@ public class AdministracionController implements Initializable {
     @FXML
     protected ObservableList tipoUsuario = FXCollections.observableArrayList();
     @FXML
-    protected static ObservableList listadoUsuarios = FXCollections.observableArrayList();
+    protected static ObservableList listadoUsuarios = FXCollections.observableArrayList(new Usuario("admin", "admin", true), new Usuario("user", "user", false));
     protected ArrayList<Usuario> listadoUsuariosAL = new ArrayList<>();
 
     @FXML
@@ -58,11 +57,11 @@ public class AdministracionController implements Initializable {
         tipoUsuario.add("Usuario");
         tipoUsuario.add("Administrador");
         lvAdmin.setItems(tipoUsuario);
-        if (contador == 0) {
-            listadoUsuarios.add(new Usuario("admin", "admin", true));
-            listadoUsuarios.add(new Usuario("user", "user", false));
-            contador++;
-        }
+//        if (contador == 0) {
+//            listadoUsuarios.add(new Usuario("admin", "admin", true));
+//            listadoUsuarios.add(new Usuario("user", "user", false));
+//            contador++;
+//        }
 
         System.out.println("Pane: " + rootLayout);
         lvUsuarios.getItems().addAll(listadoUsuarios);
@@ -82,7 +81,7 @@ public class AdministracionController implements Initializable {
             a1.getPanes().addAll(t1, t2, t3);
             hBox.getChildren().add(a1);
             hBox.setHgrow(a1, Priority.ALWAYS);
-            cargarLayout(t1, "/com/example/juntaelectoral/listadoUsuarios.fxml", "listadoUsuarios");
+            cargarLayout(t1, "/com/example/juntaelectoral/ventanaListadoUsuarios.fxml", "listadoUsuarios");
             System.out.println(0);
         } else if (lvAdmin.getSelectionModel().isSelected(0)) {
             hBox.getChildren().clear();
@@ -93,8 +92,8 @@ public class AdministracionController implements Initializable {
             hBox.getChildren().add(a1);
             hBox.setHgrow(a1, Priority.ALWAYS);
 
-            cargarLayout(t1, "/com/example/juntaelectoral/creacionUsuarios.fxml", "creacionUsuarios");
-            cargarLayout(t2, "/com/example/juntaelectoral/cambioColor.fxml", "cambioColor");
+            cargarLayout(t1, "/com/example/juntaelectoral/ventanaCreacionUsuarios.fxml", "creacionUsuarios");
+            cargarLayout(t2, "/com/example/juntaelectoral/ventanaCambioColor.fxml", "cambioColor");
 
             System.out.println(1);
         }
@@ -173,5 +172,9 @@ public class AdministracionController implements Initializable {
             if (nodo instanceof Parent)
                 verTodosLosNodos((Parent) nodo, i + 4);
         }
+    }
+
+    public static ObservableList getListadoUsuarios() {
+        return listadoUsuarios;
     }
 }
