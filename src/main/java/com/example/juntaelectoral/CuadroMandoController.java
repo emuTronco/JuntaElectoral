@@ -37,7 +37,7 @@ public class CuadroMandoController implements Initializable {
         try {
             // Cargamos el archivo Controles Dinámicos
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(CuadroMandoController.class.getResource("/com/example/juntaelectoral/ventanaCIS.fxml"));
+            loader.setLocation(ResumenComunidadController.class.getResource("/com/example/juntaelectoral/ventanaResumenComunidad.fxml"));
             AnchorPane listadoControles = (AnchorPane) loader.load();
 
             // Se sitúa en el centro del diseño principal

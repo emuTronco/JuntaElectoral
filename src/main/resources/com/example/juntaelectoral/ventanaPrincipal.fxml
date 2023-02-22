@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.juntaelectoral.PrincipalController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.juntaelectoral.PrincipalController">
    <top>
       <MenuBar BorderPane.alignment="CENTER">
         <menus>
@@ -47,9 +47,9 @@
       </MenuBar>
    </top>
    <center>
-      <HBox prefHeight="575.0" prefWidth="410.0" BorderPane.alignment="CENTER">
+      <HBox prefHeight="575.0" prefWidth="1200.0" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fitHeight="84.0" fitWidth="380.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="144.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../img/jec-logo.png" />
                </image>
@@ -57,7 +57,7 @@
                   <Insets top="250.0" />
                </HBox.margin>
             </ImageView>
-            <ImageView fitHeight="131.0" fitWidth="345.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="197.0" fitWidth="525.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../img/Logotipo_de_la_Xunta_de_Galicia.svg.png" />
                </image>
