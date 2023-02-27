@@ -25,14 +25,17 @@ public class CalculoVotaciones {
         votos[Prov.Pontevedra.ordinal()][Partidos.PP.ordinal()] = 192187;
         votos[Prov.Pontevedra.ordinal()][Partidos.BNG.ordinal()] = 111901;
         votos[Prov.Pontevedra.ordinal()][Partidos.PSdG.ordinal()] = 104734;
-        for (Prov prov : Prov.values()) {
-            List<Integer> resultado = dHondt(escaños[prov.ordinal()], votos[prov.ordinal()]);
-            System.out.println("\nProv " + prov.name());
-            System.out.println(" ");
-            for (Partidos part : Partidos.values()) {
-                System.out.println(part.name() + " " + resultado.get(part.ordinal()));
-            }
-        }
+//        for (Prov prov : Prov.values()) {
+//            List<Integer> resultado = dHondt(escaños[prov.ordinal()], votos[prov.ordinal()]);
+//            System.out.println("\nProv " + prov.name());
+//            System.out.println(" ");
+//            for (Partidos part : Partidos.values()) {
+//                System.out.println(part.name() + " " + resultado.get(part.ordinal()));
+//            }
+//        }
+        int votos2[] = {627762, 311340, 253750, 51630, 26797, 9840, 6057, 2883, 1835, 956, 896, 813, 559, 559, 533, 312, 266, 230, 117, 40};
+        List<Integer> votos4 = dHondt(75, votos2);
+        System.out.println();
     }
     public static List<Integer> dHondt(int escaños, int[] votos) {
         int partidos = votos.length;
@@ -51,4 +54,5 @@ public class CalculoVotaciones {
         }
         return resultados;
     }
+
 }

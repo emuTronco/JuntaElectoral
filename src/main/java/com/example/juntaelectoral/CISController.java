@@ -22,7 +22,7 @@ public class CISController implements Initializable {
     final static String bng = "BNG";
     final static String psdeg = "PSdeG";
     final static String mareaGaleguista = "M. Gal.";
-    final static String  galiciaComun= "G. Com.";
+    final static String podemos = "Podemos";
     final static String pacma = "PACMA";
 
     @FXML
@@ -35,21 +35,21 @@ public class CISController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         XYChart.Series series1 = new XYChart.Series();
         series1.setName("Votos");
-        series1.getData().add(new XYChart.Data(pp, 25601.34));
-        series1.getData().add(new XYChart.Data(bng, 20148.82));
-        series1.getData().add(new XYChart.Data(psdeg, 10000));
-        series1.getData().add(new XYChart.Data(mareaGaleguista, 35407.15));
-        series1.getData().add(new XYChart.Data(galiciaComun, 12000));
-        series1.getData().add(new XYChart.Data(pacma, 8000));
+        series1.getData().add(new XYChart.Data(pp, 0));
+        series1.getData().add(new XYChart.Data(bng, 0));
+        series1.getData().add(new XYChart.Data(psdeg, 0));
+        series1.getData().add(new XYChart.Data(mareaGaleguista, 0));
+        series1.getData().add(new XYChart.Data(podemos, 0));
+        series1.getData().add(new XYChart.Data(pacma, 0));
 
         XYChart.Series series2 = new XYChart.Series();
-        series2.setName("Escaños");
-        series2.getData().add(new XYChart.Data(pp, 10));
-        series2.getData().add(new XYChart.Data(bng, 15));
-        series2.getData().add(new XYChart.Data(psdeg, 435));
-        series2.getData().add(new XYChart.Data(mareaGaleguista, 354));
-        series2.getData().add(new XYChart.Data(galiciaComun, 435));
-        series2.getData().add(new XYChart.Data(pacma, 234));
+        series2.setName("Votos CIS");
+        series2.getData().add(new XYChart.Data(pp, 0));
+        series2.getData().add(new XYChart.Data(bng, 0));
+        series2.getData().add(new XYChart.Data(psdeg, 0));
+        series2.getData().add(new XYChart.Data(mareaGaleguista, 0));
+        series2.getData().add(new XYChart.Data(podemos, 0));
+        series2.getData().add(new XYChart.Data(pacma, 0));
 
         lineChart.getData().addAll(series1, series2);
 

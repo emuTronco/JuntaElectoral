@@ -17,5 +17,13 @@
         </yAxis>
       </BarChart>
       <PieChart fx:id="pieChart" layoutX="167.0" layoutY="14.0" prefHeight="177.0" prefWidth="200.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <BarChart fx:id="barChartEscaños" prefHeight="16.0" prefWidth="15.0" visible="false">
+        <xAxis>
+          <CategoryAxis fx:id="categoryAxisE" side="BOTTOM" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis fx:id="numberAxisE" side="LEFT" />
+        </yAxis>
+      </BarChart>
    </children>
 </AnchorPane>

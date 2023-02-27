@@ -43,6 +43,15 @@ public class CuadroMandoController implements Initializable {
     @FXML
     Rectangle rectangulo;
 
+    final int votosPP = 627762;
+    final int votosBNG = 311340;
+    final int votosPSdeG = 253750;
+    final int votosMGAL = 2883;
+    final int votosPACMA = 6057;
+    final int votosPodemos = 51630;
+    final int votosTotales = 1320955;
+    final int censoElectoral = 2697490;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         cargarLayout(hbox4, "/com/example/juntaelectoral/ventanaCIS-S.fxml", "CIS");
@@ -51,6 +60,7 @@ public class CuadroMandoController implements Initializable {
         cargarLayout(hbox7, "/com/example/juntaelectoral/ventanaResumenComunidad-S.fxml", "Comunidad");
 
 //        webView.getEngine().load("https://www.youtube.com/embed/W5xhIy2jMkY?autoplay=1");
+
 //        AnimationTimer timer = new AnimationTimer() {
 //            @Override
 //            public void handle(long now) {
@@ -99,7 +109,7 @@ public class CuadroMandoController implements Initializable {
     }
 
     @FXML
-    public void expandirVentana() throws IOException {
+    public void expandirVentanaResumen() throws IOException {
         try {
             // Cargamos el archivo Controles Dinámicos
             FXMLLoader loader = new FXMLLoader();
@@ -114,6 +124,40 @@ public class CuadroMandoController implements Initializable {
             e.printStackTrace();
         }
     }
+
+    @FXML
+    public void expandirVentanaCIS() throws IOException {
+        try {
+            // Cargamos el archivo Controles Dinámicos
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(CISController.class.getResource("/com/example/juntaelectoral/ventanaCIS.fxml"));
+            AnchorPane listadoControles = (AnchorPane) loader.load();
+
+            // Se sitúa en el centro del diseño principal
+
+            hboxPrincipal.getChildren().clear();
+            hboxPrincipal.getChildren().add(listadoControles);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    @FXML
+    public void expandirVentanaAnimacion() throws IOException {
+        try {
+            // Cargamos el archivo Controles Dinámicos
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(AnimacionResultadosController.class.getResource("/com/example/juntaelectoral/ventanaAnimacionResultados.fxml"));
+            AnchorPane listadoControles = (AnchorPane) loader.load();
+
+            // Se sitúa en el centro del diseño principal
+
+            hboxPrincipal.getChildren().clear();
+            hboxPrincipal.getChildren().add(listadoControles);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     private void cargarLayout(HBox hbox, String ruta, String controller) {
         try {
@@ -140,6 +184,14 @@ public class CuadroMandoController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public int mediaGauss(int numVotos) {
+        return numVotos / 2;
+    }
+
+    public int desviacionGauss(int numVotos) {
+        return numVotos / 4;
     }
 
 //    Timeline timeline = new Timeline(new KeyFrame(Duration.millis(10), new EventHandler<ActionEvent>() {

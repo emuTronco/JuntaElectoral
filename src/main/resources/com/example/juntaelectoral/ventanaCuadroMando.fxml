@@ -30,7 +30,7 @@
                <children>
                   <HBox fx:id="hbox1" alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <ImageView fitHeight="117.0" fitWidth="325.0" onMouseClicked="#expandirVentana" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="117.0" fitWidth="325.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../../img/Logotipo_de_la_Xunta_de_Galicia.svg.png" />
                            </image>
@@ -47,7 +47,7 @@
                         </ImageView>
                      </children>
                   </HBox>
-                  <HBox fx:id="hbox4" alignment="CENTER" fillHeight="false" maxHeight="-Infinity" maxWidth="-Infinity" onMouseClicked="#expandirVentana" prefHeight="202.0" prefWidth="367.0" GridPane.hgrow="NEVER" GridPane.rowIndex="1" GridPane.vgrow="NEVER" />
+                  <HBox fx:id="hbox4" alignment="CENTER" fillHeight="false" maxHeight="-Infinity" maxWidth="-Infinity" onMouseClicked="#expandirVentanaCIS" prefHeight="202.0" prefWidth="367.0" GridPane.hgrow="NEVER" GridPane.rowIndex="1" GridPane.vgrow="NEVER" />
                   <HBox fx:id="hbox5" alignment="CENTER" fillHeight="false" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="173.0" prefWidth="395.0" GridPane.columnIndex="1" GridPane.hgrow="NEVER" GridPane.rowIndex="1" GridPane.vgrow="NEVER">
                      <children>
                         <ImageView fitHeight="150.0" fitWidth="225.0" pickOnBounds="true" preserveRatio="true">
@@ -57,10 +57,10 @@
                         </ImageView>
                      </children>
                   </HBox>
-                  <HBox fx:id="hbox6" fillHeight="false" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="218.0" prefWidth="366.0" GridPane.columnIndex="2" GridPane.hgrow="NEVER" GridPane.rowIndex="1" GridPane.vgrow="NEVER" />
-                  <HBox fx:id="hbox7" fillHeight="false" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="196.0" prefWidth="367.0" GridPane.hgrow="NEVER" GridPane.rowIndex="2" GridPane.vgrow="NEVER" />
+                  <HBox fx:id="hbox6" fillHeight="false" maxHeight="-Infinity" maxWidth="-Infinity" onMouseClicked="#expandirVentanaAnimacion" prefHeight="218.0" prefWidth="366.0" GridPane.columnIndex="2" GridPane.hgrow="NEVER" GridPane.rowIndex="1" GridPane.vgrow="NEVER" />
+                  <HBox fx:id="hbox7" fillHeight="false" maxHeight="-Infinity" maxWidth="-Infinity" onMouseClicked="#expandirVentanaResumen" prefHeight="196.0" prefWidth="367.0" GridPane.hgrow="NEVER" GridPane.rowIndex="2" GridPane.vgrow="NEVER" />
                   <HBox fx:id="hbox8" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.hgrow="NEVER" GridPane.rowIndex="2" GridPane.vgrow="NEVER" />
-                  <HBox fx:id="hbox9" alignment="CENTER" onMouseClicked="#expandirVentana" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                  <HBox fx:id="hbox9" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
                      <children>
                         <WebView fx:id="webView" prefHeight="176.0" prefWidth="366.0" />
                      </children></HBox>

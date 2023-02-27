@@ -5,6 +5,7 @@
 <?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 
 <AnchorPane prefHeight="530.0" prefWidth="1130.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.juntaelectoral.ResumenComunidadController">
    <children>
@@ -16,6 +17,18 @@
           <NumberAxis fx:id="numberAxis" side="LEFT" />
         </yAxis>
       </BarChart>
-      <PieChart fx:id="pieChart" layoutX="742.0" layoutY="55.0" prefHeight="400.0" prefWidth="400.0" AnchorPane.bottomAnchor="65.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="65.0" />
+      <VBox alignment="CENTER" layoutX="730.0" layoutY="65.0" prefHeight="530.0" prefWidth="400.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <PieChart fx:id="pieChart" prefHeight="350.0" prefWidth="400.0" />
+            <BarChart fx:id="barChartEscaños" prefHeight="180.0" prefWidth="500.0">
+              <xAxis>
+                <CategoryAxis fx:id="categoryAxisE" side="BOTTOM" />
+              </xAxis>
+              <yAxis>
+                <NumberAxis fx:id="numberAxisE" side="LEFT" />
+              </yAxis>
+            </BarChart>
+         </children>
+      </VBox>
    </children>
 </AnchorPane>
