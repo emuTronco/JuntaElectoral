@@ -59,7 +59,7 @@ public class CuadroMandoController implements Initializable {
 //        cargarLayout(hbox7, "/com/example/juntaelectoral/ventanaResumenProvincia-S.fxml", "Provincia");
         cargarLayout(hbox7, "/com/example/juntaelectoral/ventanaResumenComunidad-S.fxml", "Comunidad");
 
-//        webView.getEngine().load("https://www.youtube.com/embed/W5xhIy2jMkY?autoplay=1");
+        webView.getEngine().load("https://www.youtube.com/embed/W5xhIy2jMkY?autoplay=1");
 
 //        AnimationTimer timer = new AnimationTimer() {
 //            @Override

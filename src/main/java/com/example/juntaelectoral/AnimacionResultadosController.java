@@ -26,7 +26,6 @@ public class AnimacionResultadosController implements Initializable {
 
         //Prepare XYChart.Series objects by setting data
         XYChart.Series series1 = new XYChart.Series();
-        series1.setName("Asia");
         series1.getData().add(new XYChart.Data("9:00", 502));
         series1.getData().add(new XYChart.Data("11:00", 635));
         series1.getData().add(new XYChart.Data("13:00", 809));
@@ -36,7 +35,6 @@ public class AnimacionResultadosController implements Initializable {
         series1.getData().add(new XYChart.Data("21:00", 5268));
 
         XYChart.Series series2 = new XYChart.Series();
-        series2.setName("Africa");
         series2.getData().add(new XYChart.Data("9:00", 106));
         series2.getData().add(new XYChart.Data("11:00", 107));
         series2.getData().add(new XYChart.Data("13:00", 111));
@@ -48,7 +46,6 @@ public class AnimacionResultadosController implements Initializable {
         stackedAreaChart.getData().addAll(series1, series2);
 
         XYChart.Series series3 = new XYChart.Series();
-        series1.setName("Asia");
         series3.getData().add(new XYChart.Data("9:00", 20));
         series3.getData().add(new XYChart.Data("11:00", 25));
         series3.getData().add(new XYChart.Data("13:00", 36));
